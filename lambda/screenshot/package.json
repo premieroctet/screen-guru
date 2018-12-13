@@ -1,0 +1,19 @@
+{
+  "name": "screenshot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build-lambda-sharp": "env npm_config_arch=x64 npm_config_platform=linux npm_config_target=8.10.0 yarn add sharp"
+  },
+  "dependencies": {
+    "chrome-aws-lambda": "^1.11.1",
+    "hex-rgb": "^3.0.0",
+    "puppeteer-core": "^1.11.0",
+    "sharp": "^0.21.1"
+  },
+  "devDependencies": {
+    "serverless-apigw-binary": "^0.4.4",
+    "serverless-apigwy-binary": "^0.1.0"
+  }
+}

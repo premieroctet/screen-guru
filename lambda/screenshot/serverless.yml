@@ -1,0 +1,27 @@
+service: screenshot
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: eu-central-1
+  stage: production
+
+functions:
+  screenshot:
+    handler: handler.screenshot
+    timeout: 10
+    events:
+      - http:
+          path: screenshot
+          method: get
+          contentHandling: CONVERT_TO_BINARY
+    environment:
+      HOME: /var/task
+
+plugins:
+  - serverless-apigwy-binary
+  - serverless-apigw-binary
+ 
+custom:
+  apigwBinary:
+    types:
+      - "*/*"
