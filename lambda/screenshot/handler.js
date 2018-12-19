@@ -34,7 +34,7 @@ module.exports.screenshot = async (event, context, callback) => {
       color = event.queryStringParameters.color;
     }
 
-    await page.goto(url, { waitUntil: 'networkidle0' });
+    await page.goto(url, { waitUntil: 'networkidle2' });
     await page.setViewport({ width: 1280, height: 800 });
     const screenshot = await page.screenshot();
     await browser.close();
