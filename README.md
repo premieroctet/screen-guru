@@ -41,6 +41,7 @@ yarn global add serverless
 cd lambda/screenshot
 serverless config credentials –provider aws –key XXX –secret XXX
 yarn
+yarn add --dev serverless-apigwy-binary serverless-apigw-binary
 yarn build-lambda-sharp
 
 serverless deploy
