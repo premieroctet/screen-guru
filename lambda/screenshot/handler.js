@@ -5,6 +5,9 @@ const chromium = require('chrome-aws-lambda');
 const puppeteer = require('puppeteer-core');
 const hexRgb = require('hex-rgb');
 
+const quantcastCleaner = require('./utils/cleaners/quantcast');
+const bannerCleaner = require('./utils/cleaners/banner');
+
 module.exports.screenshot = async (event, context, callback) => {
   let browser = null;
 
@@ -18,7 +21,7 @@ module.exports.screenshot = async (event, context, callback) => {
     let page = await browser.newPage();
 
     let url = 'https://www.premieroctet.com/';
-    let color = 'E9D460';
+    let color = 'transparent';
 
     if (event.queryStringParameters && event.queryStringParameters.url) {
       const httpPrefix = 'http://';
@@ -35,22 +38,36 @@ module.exports.screenshot = async (event, context, callback) => {
     }
 
     await page.goto(url, { waitUntil: 'networkidle2' });
+
+    const cleaners = [bannerCleaner, quantcastCleaner];
+
+    let elementRemoved = false;
+    cleaners.forEach(async cleaner => {
+      if (!elementRemoved) {
+        elementRemoved = await page.evaluate(cleaner);
+      }
+    });
+
     await page.setViewport({ width: 1280, height: 800 });
     const screenshot = await page.screenshot();
     await browser.close();
 
-    let r = 233;
-    let g = 212;
-    let b = 96;
+    let r,
+      g,
+      b = 0;
 
     try {
       ({ red: r, green: g, blue: b } = hexRgb(color));
-    } catch (e) {}
+    } catch (e) {
+      color = 'transparent';
+    }
 
-    const buffer = await sharp(__dirname + '/browser.png')
-      .overlayWith(screenshot, { top: 138, left: 112 })
-      .flatten({ background: { r, g, b, alpha: 1 } })
-      .toBuffer();
+    let image = await sharp(__dirname + '/assets/browser.png').overlayWith(screenshot, { top: 138, left: 112 });
+    if (color !== 'transparent') {
+      image = await image.flatten({ background: { r, g, b, alpha: 1 } });
+    }
+
+    const buffer = await image.toBuffer();
 
     callback(null, {
       statusCode: 200,
