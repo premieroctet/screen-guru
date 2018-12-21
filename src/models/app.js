@@ -6,6 +6,7 @@ const INITIAL_STATE = {
   hasError: false,
   url: '',
   color: DEFAULT_BACKGROUND,
+  noBackground: false,
 };
 
 export default {
@@ -29,6 +30,10 @@ export default {
 
     setLoading(state) {
       return { ...state, isLoading: true, hasError: false };
+    },
+
+    toggleNoBackground(state) {
+      return { ...state, noBackground: !state.noBackground };
     },
 
     clear(state) {

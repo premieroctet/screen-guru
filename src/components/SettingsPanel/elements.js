@@ -2,10 +2,13 @@ import styled from 'styled-components';
 
 export const ColorLink = styled.span`
   display: inline-block;
-  cursor: pointer;
   padding-bottom: 3px;
   border-bottom: 3px solid red;
   border-color: ${props => props.borderColor};
+  opacity: ${props => (props.disabled ? 0.2 : 1)};
+  pointer-events: ${props => (props.disabled ? 'none' : null)};
+  cursor: ${props => (props.disabled ? 'none' : 'pointer')};
+  transition: opacity 0.2s ease;
 `;
 
 export const Popover = styled.div`
@@ -20,6 +23,8 @@ export const Panel = styled.div`
   font-weight: normal;
   position: relative;
   text-align: left;
+  display: flex;
+  justify-content: space-between;
 
   @media screen and (max-width: 500px) {
     text-align: center;

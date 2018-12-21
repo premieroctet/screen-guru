@@ -9,6 +9,8 @@ import SettingsPanel from '../components/SettingsPanel';
 class Home extends Component {
   urlInputRef = React.createRef();
 
+  state = { invalidUrl: false };
+
   componentDidMount = () => {
     if (this.urlInputRef.current) {
       this.urlInputRef.current.focus();
@@ -17,12 +19,19 @@ class Home extends Component {
     this.props.clear();
   };
 
+  handleOnChange = e => {
+    this.props.updateUrl(e.target.value);
+    this.setState({ invalidUrl: false });
+  };
+
   handleOnSubmit = e => {
     e.preventDefault();
 
     if (isValidURL(this.props.url)) {
       this.props.setLoading();
       this.props.navigate(`/screenshot`);
+    } else {
+      this.setState({ invalidUrl: true });
     }
   };
 
@@ -39,14 +48,15 @@ class Home extends Component {
               ref={this.urlInputRef}
               placeholder="Website URL"
               value={this.props.url}
-              onChange={e => this.props.updateUrl(e.target.value)}
+              onChange={this.handleOnChange}
               type="text"
+              invalidUrl={this.state.invalidUrl}
               autoComplete="off"
             />
 
             <InputSubmit value="Create" type="submit" />
 
-            <SettingsPanel color={this.props.color} onChangeComplete={color => this.props.updateColor(color.hex)} />
+            <SettingsPanel />
           </form>
         )}
       </Fragment>
@@ -67,6 +77,7 @@ const mapDispatch = state => ({
   updateColor: state.app.updateColor,
   setImageError: state.app.setImageError,
   setLoading: state.app.setLoading,
+  toggleNoBackground: state.app.toggleNoBackground,
   clear: state.app.clear,
 });
 

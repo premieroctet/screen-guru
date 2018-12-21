@@ -64,8 +64,7 @@ export const InputText = styled.input`
   border-right: 3px solid #1050ff;
   border-bottom-left-radius: 5px;
   color: #1050ff;
-  background: transparent;
-
+  background: ${props => (props.invalidUrl ? '#ffefef' : 'transparent')};
   @media screen and (max-width: 500px) {
     width: 200px;
   }

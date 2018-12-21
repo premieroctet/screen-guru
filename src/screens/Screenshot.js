@@ -20,6 +20,11 @@ class Screenshot extends Component {
       return <Redirect to="/" noThrow />;
     }
 
+    let url = `${SERVICE_URL}?url=${props.url}`;
+    if (!this.props.noBackground) {
+      url += `&color=${color}`;
+    }
+
     return (
       <Fragment>
         {(props.isLoading || props.isReady) && (
@@ -29,7 +34,7 @@ class Screenshot extends Component {
               alt="Your screenshot"
               onError={props.setImageError}
               onLoad={props.setImageLoaded}
-              src={`${SERVICE_URL}?url=${props.url}&color=${color}`}
+              src={url}
             />
             <br />
             {props.isReady && <BackButton onClick={() => props.navigate('/')}>Back</BackButton>}
@@ -46,6 +51,7 @@ const mapState = state => ({
   hasError: state.app.hasError,
   url: state.app.url,
   color: state.app.color,
+  noBackground: state.app.noBackground,
 });
 
 const mapDispatch = state => ({
