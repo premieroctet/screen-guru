@@ -1,16 +1,11 @@
 import React, { Component, Fragment } from 'react';
+import { Redirect } from '@reach/router';
 import { connect } from 'react-redux';
 import { Image, BackButton } from './elements';
 
 const SERVICE_URL = process.env.REACT_APP_LAMBDA_ENDPOINT;
 
 class Screenshot extends Component {
-  componentDidMount() {
-    if (!this.props.url) {
-      this.props.navigate('/');
-    }
-  }
-
   componentDidUpdate() {
     if (this.props.hasError) {
       this.props.navigate('/');
@@ -20,6 +15,10 @@ class Screenshot extends Component {
   render() {
     const { props } = this;
     const color = props.color.substring(1, props.color.length);
+
+    if (!this.props.url) {
+      return <Redirect to="/" noThrow />;
+    }
 
     return (
       <Fragment>
