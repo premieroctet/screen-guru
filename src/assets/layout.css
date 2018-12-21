@@ -1,5 +1,5 @@
 body {
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   height: 100vh;
   color: #1050ff;
   margin: 0;
@@ -10,7 +10,7 @@ body {
 
 body:before,
 body:after {
-  content: "";
+  content: '';
   position: fixed;
   background: #1050ff;
   left: 0;
