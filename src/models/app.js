@@ -25,7 +25,7 @@ export default {
     },
 
     updateColor(state, color) {
-      return { ...state, color };
+      return { ...state, color: color.hex };
     },
 
     setLoading(state) {
