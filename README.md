@@ -8,6 +8,12 @@
 
 [![Screeshot](https://user-images.githubusercontent.com/1102595/50456960-4de2ec00-0958-11e9-8f50-598b1eceb026.png)](https://screen.guru)
 
+**Bookmarklet**
+
+```
+javascript:location.href='https://screen.guru?url='+encodeURIComponent(location.href)
+```
+
 ## Getting started
 
 **Stack**
