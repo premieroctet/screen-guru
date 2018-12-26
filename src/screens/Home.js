@@ -17,6 +17,13 @@ class Home extends Component {
     }
 
     this.props.clear();
+
+    const queryParams = new URLSearchParams(this.props.location.search);
+    const url = queryParams.get('url');
+
+    if (url && isValidURL(url)) {
+      this.props.updateUrl(url);
+    }
   };
 
   handleOnChange = e => {
