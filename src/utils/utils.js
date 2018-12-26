@@ -1,4 +1,5 @@
-export const isValidURL = str => {
+export const isValidURL = url => {
+  let validUrl = true;
   var pattern = new RegExp(
     '^(https?:\\/\\/)?' + // protocol
     '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name and extension
@@ -10,5 +11,11 @@ export const isValidURL = str => {
     'i',
   ); // fragment locator
 
-  return pattern.test(str);
+  try {
+    Boolean(new URL(url));
+  } catch (e) {
+    validUrl = false;
+  }
+
+  return pattern.test(url) || validUrl;
 };
