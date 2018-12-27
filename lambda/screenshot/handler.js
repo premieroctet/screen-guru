@@ -49,6 +49,9 @@ module.exports.screenshot = async (event, context, callback) => {
     });
 
     await page.setViewport({ width: 1280, height: 800 });
+    await page._client.send('Animation.setPlaybackRate', { playbackRate: 20 });
+    await page.waitFor(500);
+
     const screenshot = await page.screenshot();
     await browser.close();
 
