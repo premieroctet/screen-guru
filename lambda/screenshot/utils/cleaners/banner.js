@@ -1,9 +1,9 @@
 module.exports = () =>
   new Promise(resolve => {
-    ['cookie', 'banner', 'gdpr'].map(className => {
+    ['cookie', 'banner', 'gdpr', 'privacy'].map(className => {
       const element = document.evaluate(
-        `//div[contains(@class, '${className}') and contains(
-      translate(.//div, 'C', 'c'),
+        `//*[(contains(@class, '${className}') or contains(@id, '${className}')) and contains(
+      translate(.//*, 'C', 'c'),
       'cookie'
     )]`,
         document,
