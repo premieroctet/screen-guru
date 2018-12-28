@@ -6,6 +6,9 @@ export const ScreenWrapper = styled.div`
   align-items: center;
   justify-content: center;
   text-align: center;
+  @media screen and (max-width: 500px) {
+    padding: 0 40px;
+  }
 `;
 
 export const ScreenInner = styled.div`
