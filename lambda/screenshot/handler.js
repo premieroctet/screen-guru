@@ -24,12 +24,10 @@ module.exports.screenshot = async (event, context, callback) => {
     let color = 'transparent';
 
     if (event.queryStringParameters && event.queryStringParameters.url) {
-      const httpPrefix = 'http://';
-      const httpsPrefix = 'https://';
-      url = event.queryStringParameters.url;
+      url = decodeURIComponent(event.queryStringParameters.url);
 
-      if (url.substr(0, httpPrefix.length) !== httpPrefix && url.substr(0, httpsPrefix.length) !== httpsPrefix) {
-        url = httpPrefix + url;
+      if (!url.startsWith('http')) {
+        url = 'http://' + url;
       }
     }
 
@@ -37,6 +35,7 @@ module.exports.screenshot = async (event, context, callback) => {
       color = event.queryStringParameters.color;
     }
 
+    await page.setViewport({ width: 1280, height: 800 });
     await page.goto(url, { waitUntil: 'networkidle2' });
 
     const cleaners = [bannerCleaner, quantcastCleaner];
@@ -48,7 +47,6 @@ module.exports.screenshot = async (event, context, callback) => {
       }
     });
 
-    await page.setViewport({ width: 1280, height: 800 });
     await page._client.send('Animation.setPlaybackRate', { playbackRate: 20 });
     await page.waitFor(500);
 

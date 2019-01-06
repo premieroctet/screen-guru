@@ -16,11 +16,12 @@ class Screenshot extends Component {
     const { props } = this;
     const color = props.color.substring(1, props.color.length);
 
-    if (!this.props.url) {
+    if (!props.url) {
       return <Redirect to="/" noThrow />;
     }
 
-    let url = `${SERVICE_URL}?url=${props.url}`;
+    let url = `${SERVICE_URL}?url=${encodeURIComponent(props.url)}`;
+
     if (!this.props.noBackground) {
       url += `&color=${color}`;
     }
