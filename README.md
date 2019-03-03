@@ -6,7 +6,7 @@
 - 🖥 Browser template
 - ⚡️ Emoji ready (with [Emojione font](https://github.com/emojione/emojione-assets))
 
-[![Screeshot](https://user-images.githubusercontent.com/1102595/50456960-4de2ec00-0958-11e9-8f50-598b1eceb026.png)](https://screen.guru)
+[![Screeshot](https://user-images.githubusercontent.com/1102595/53693876-e0fc3000-3da6-11e9-9df2-5acbef417377.png)](https://screen.guru)
 
 **Bookmarklet**
 
