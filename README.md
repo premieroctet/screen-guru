@@ -1,3 +1,7 @@
+<p align="center">
+<img width="207" alt="image" src="https://user-images.githubusercontent.com/1102595/55682551-7b670a80-5935-11e9-8f2f-1d2ef3de8dc3.png">
+</p>
+
 # Screen Guru 🔮
 
 > Take clean screenshot of any websites. — https://screen.guru
