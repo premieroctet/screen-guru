@@ -25,6 +25,7 @@ module.exports.screenshot = async (event, context, callback) => {
 
     if (event.queryStringParameters && event.queryStringParameters.url) {
       url = decodeURIComponent(event.queryStringParameters.url);
+      url = url.toLowerCase();
 
       if (!url.startsWith('http')) {
         url = 'http://' + url;

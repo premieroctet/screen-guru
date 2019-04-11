@@ -52,6 +52,8 @@ class Home extends Component {
         {!isLoading && !isReady && (
           <form onSubmit={this.handleOnSubmit}>
             <InputText
+              autocorrect="off"
+              autocapitalize="none"
               ref={this.urlInputRef}
               placeholder="Website URL"
               value={this.props.url}
