@@ -5,7 +5,7 @@
   "dependencies": {
     "@reach/router": "^1.2.1",
     "@rematch/core": "^1.0.6",
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "react": "^16.8.2",
     "react-color": "^2.13.8",
     "react-confetti": "^2.0.2",
