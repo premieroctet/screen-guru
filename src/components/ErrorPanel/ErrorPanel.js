@@ -1,7 +1,7 @@
 import React from 'react';
 import { ErrorWrapper } from './elements';
 
-export default props => (
+const ErrorPanel = () => (
   <ErrorWrapper>
     <span role="img" aria-label="Error">
       😱
@@ -10,3 +10,5 @@ export default props => (
     later. Sorry!
   </ErrorWrapper>
 );
+
+export default ErrorPanel;

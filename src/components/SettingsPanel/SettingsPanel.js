@@ -1,48 +1,40 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { TwitterPicker } from 'react-color';
 import { ColorLink, Popover, Overlay, Panel } from './elements';
 
-const SettingsPanel = props => {
+const SettingsPanel = () => {
   const [showColorPicker, setShowColorPicker] = useState(false);
+
+  const dispatch = useDispatch();
+  const { updateColor, toggleNoBackground } = dispatch.app;
+
+  const noBackground = useSelector(state => state.app.noBackground);
+  const color = useSelector(state => state.app.color);
 
   return (
     <Panel>
       <ColorLink
-        disabled={props.noBackground}
+        disabled={noBackground}
         onClick={() => setShowColorPicker(!showColorPicker)}
         className="color-link"
-        borderColor={props.color}
+        borderColor={color}
       >
         Pick the background color
       </ColorLink>
 
       <label>
-        <input value={props.noBackground} onChange={e => props.onToggleBackground(e.target.value)} type="checkbox" /> No
-        background
+        <input value={noBackground} onChange={e => toggleNoBackground(e.target.value)} type="checkbox" /> No background
       </label>
 
       {showColorPicker && (
         <Popover>
           <Overlay onClick={() => setShowColorPicker(false)} />
-          <TwitterPicker {...props} />
+          <TwitterPicker onChangeComplete={selectedColor => updateColor(selectedColor)} />
         </Popover>
       )}
     </Panel>
   );
 };
 
-const mapState = state => ({
-  noBackground: state.app.noBackground,
-  color: state.app.color,
-});
-
-const mapDispatch = state => ({
-  onToggleBackground: state.app.toggleNoBackground,
-  onChangeComplete: state.app.updateColor,
-});
-
-export default connect(
-  mapState,
-  mapDispatch,
-)(SettingsPanel);
+export default SettingsPanel;

@@ -1,38 +1,36 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import SizeMe from 'react-sizeme';
 import Confetti from 'react-confetti';
 import { ScreenWrapper, ScreenInner } from './elements';
 import Footer from '../Footer';
 import Header from '../Header';
 
-const Layout = props => (
-  <ScreenWrapper>
-    <ScreenInner>
-      <Header isLoading={props.isLoading} isReady={props.isReady} hasError={props.hasError} />
+const Layout = props => {
+  const isLoading = useSelector(state => state.app.isLoading);
+  const isReady = useSelector(state => state.app.isReady);
+  const hasError = useSelector(state => state.app.hasError);
 
-      {props.isReady && (
-        <Confetti
-          run={props.isReady}
-          recycle={false}
-          width={props.size.width}
-          height={props.size.height}
-          colors={['#1050ff']}
-        />
-      )}
+  return (
+    <ScreenWrapper>
+      <ScreenInner>
+        <Header isLoading={isLoading} isReady={isReady} hasError={hasError} />
 
-      {props.children}
-    </ScreenInner>
-    <Footer />
-  </ScreenWrapper>
-);
+        {isReady && (
+          <Confetti
+            run={isReady}
+            recycle={false}
+            width={props.size.width}
+            height={props.size.height}
+            colors={['#1050ff']}
+          />
+        )}
 
-const mapState = state => ({
-  isReady: state.app.isReady,
-  isLoading: state.app.isLoading,
-  hasError: state.app.url,
-});
+        {props.children}
+      </ScreenInner>
+      <Footer />
+    </ScreenWrapper>
+  );
+};
 
-const LayoutContainer = connect(mapState)(Layout);
-
-export default SizeMe({ monitorHeight: true })(LayoutContainer);
+export default SizeMe({ monitorHeight: true })(Layout);

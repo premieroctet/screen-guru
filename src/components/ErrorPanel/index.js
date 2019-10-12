@@ -1,3 +1,1 @@
-import ErrorPanel from './ErrorPanel';
-
-export default ErrorPanel;
+export { default } from './ErrorPanel';

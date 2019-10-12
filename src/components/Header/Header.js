@@ -3,7 +3,7 @@ import React from 'react';
 import logo from './../../assets/logo.svg';
 import guru from './../../assets/guru.svg';
 
-export default ({ isLoading, isReady }) => {
+const Header = ({ isLoading, isReady }) => {
   const hasNoActivity = !isLoading && !isReady;
 
   return (
@@ -27,3 +27,5 @@ export default ({ isLoading, isReady }) => {
     </header>
   );
 };
+
+export default Header;
