@@ -1,18 +1,18 @@
 body {
   font-family: 'Lato', sans-serif;
   height: 100vh;
-  color: #1050ff;
+  color: #e67e22;
   margin: 0;
   padding: 0;
-  border-left: 10px solid #1050ff;
-  border-right: 10px solid #1050ff;
+  border-left: 10px solid #e67e22;
+  border-right: 10px solid #e67e22;
 }
 
 body:before,
 body:after {
   content: '';
   position: fixed;
-  background: #1050ff;
+  background: #e67e22;
   left: 0;
   right: 0;
   height: 10px;
@@ -44,11 +44,11 @@ a {
 
 ::selection {
   color: white;
-  background: #1050ff;
+  background: #e67e22;
 }
 
 ::placeholder {
-  color: #1050ff;
+  color: #e67e22;
 }
 
 /* https://github.com/daneden/animate.css/blob/master/animate.css */

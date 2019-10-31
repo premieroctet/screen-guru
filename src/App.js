@@ -11,7 +11,7 @@ import './assets/layout.css';
 
 const App = () => (
   <Layout>
-    <GithubCorner color="white" backgroundColor="#1050FF" url="https://github.com/premieroctet/screen-guru" />
+    <GithubCorner color="white" backgroundColor="#E67E22" url="https://github.com/premieroctet/screen-guru" />
 
     <Router>
       <Home path="/" />

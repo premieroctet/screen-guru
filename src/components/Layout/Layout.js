@@ -22,7 +22,7 @@ const Layout = props => {
             recycle={false}
             width={props.size.width}
             height={props.size.height}
-            colors={['#1050ff']}
+            colors={['#e67e22']}
           />
         )}
 
