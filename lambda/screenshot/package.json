@@ -10,7 +10,7 @@
     "chrome-aws-lambda": "^1.11.1",
     "hex-rgb": "^3.0.0",
     "puppeteer-core": "^1.11.0",
-    "sharp": "^0.21.1"
+    "sharp": "^0.30.5"
   },
   "devDependencies": {
     "serverless-apigw-binary": "^0.4.4",
