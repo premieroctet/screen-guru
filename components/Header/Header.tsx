@@ -1,16 +1,16 @@
 import React from 'react';
+import Image from 'next/image';
 
-import logo from './../../assets/logo.svg';
-import guru from './../../assets/guru.svg';
-
-const Header = ({ isLoading, isReady }) => {
+const Header = ({ isLoading, isReady }: { isLoading: boolean; isReady: boolean }) => {
   const hasNoActivity = !isLoading && !isReady;
 
   return (
     <header>
-      {hasNoActivity && <img alt="Screen Guru" src={logo} width="300px" />}
+      {hasNoActivity && <Image src="/logo.svg" alt="Screen Guru" width={300} height={180} />}
 
-      {isLoading && <img className="animated infinite tada" alt="Guru is working" src={guru} width="80px" />}
+      {isLoading && (
+        <Image className="animated infinite tada" src="/guru.svg" alt="Guru is working" width={90} height={110} />
+      )}
 
       {(hasNoActivity || isLoading) && <h1>screen.guru</h1>}
       {hasNoActivity && <h2>Take clean screenshot of any websites</h2>}
