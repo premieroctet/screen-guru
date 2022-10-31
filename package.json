@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@rematch/core": "^2.2.0",
-    "axios": "^1.1.3",
     "next": "13.0.0",
     "next-head-seo": "^0.1.3",
     "react": "18.2.0",
