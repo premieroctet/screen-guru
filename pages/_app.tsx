@@ -6,13 +6,13 @@ import 'react-github-corners/dist/GithubCorner.css';
 import '../styles/globals.css';
 
 const store = init({
-	models,
+  models,
 });
 
 export default function App({ Component, pageProps }: AppProps) {
-	return (
-		<Provider store={store}>
-			<Component {...pageProps} />
-		</Provider>
-	);
+  return (
+    <Provider store={store}>
+      <Component {...pageProps} />
+    </Provider>
+  );
 }
