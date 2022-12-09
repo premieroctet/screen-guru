@@ -1,34 +1,59 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<p align="center">
+<img width="207" alt="image" src="https://user-images.githubusercontent.com/1102595/56277368-832c6900-6104-11e9-93fa-9d27636e3fb5.png">
+</p>
 
-## Getting Started
+# Screen Guru 🔮
 
-First, run the development server:
+> Take clean screenshot of any websites. — https://screen.guru
 
-```bash
-npm run dev
-# or
-yarn dev
+- 🎨 Custom background color
+- 🖥 Browser template
+- ⚡️ Emoji ready (with [Emojione font](https://github.com/emojione/emojione-assets))
+
+[![Screeshot](https://user-images.githubusercontent.com/1102595/53693876-e0fc3000-3da6-11e9-9df2-5acbef417377.png)](https://screen.guru)
+
+**Bookmarklet**
+
+```
+javascript:location.href='https://screen.guru?url='+encodeURIComponent(location.href)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Getting started
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+**Stack**
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+- ⚛️ [Create React App](https://facebook.github.io/create-react-app/)
+- ✨ [Amazon Lambda](https://aws.amazon.com/fr/lambda/)
+- 📸 [Puppeteer](https://github.com/GoogleChrome/puppeteer)
+- ☁️ [Serverless](https://serverless.com/)
+- 🏡 [Netlify](https://netlify.com)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+**Install dependencies**
 
-## Learn More
+```sh
+yarn install
+```
 
-To learn more about Next.js, take a look at the following resources:
+**Build app**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```sh
+yarn build
+# Deploy the static app with Netlify / Surge.sh / Zeit
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+**Deploy lambda on AWS**
 
-## Deploy on Vercel
+With [serverless](https://serverless.com/):
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```sh
+yarn global add serverless
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+cd lambda/screenshot
+serverless config credentials --provider aws --key XXX --secret XXX
+yarn
+yarn build-lambda-sharp
+
+serverless deploy
+```
+
+Update the env var `REACT_APP_LAMBDA_ENDPOINT` (in `.env`) with your lambda endpoint
