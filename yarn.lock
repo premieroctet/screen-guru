@@ -462,6 +462,13 @@
     "@typescript-eslint/types" "5.41.0"
     eslint-visitor-keys "^3.3.0"
 
+"@vercel/analytics@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@vercel/analytics/-/analytics-1.1.2.tgz#7e3a863abca5cb276a8e7783dc8a32689cb769bb"
+  integrity sha512-CodhkLCQ/EHzjX8k+Qg+OzTBY0UadykrcfolfSOJVZZY/ZJM5nbhztm9KdbYvMfqKlasAr1+OYy0ThZnDA/MYA==
+  dependencies:
+    server-only "^0.0.1"
+
 acorn-jsx@^5.3.2:
   version "5.3.2"
   resolved "https://registry.yarnpkg.com/acorn-jsx/-/acorn-jsx-5.3.2.tgz#7ed5bb55908b3b2f1bc55c6af1653bada7f07937"
@@ -1967,6 +1974,11 @@ semver@^7.3.7:
   integrity sha512-NB1ctGL5rlHrPJtFDVIVzTyQylMLu9N9VICA6HSFJo8MCGVTMW6gfpicwKmmK/dAjTOrqu5l63JJOpDSrAis3A==
   dependencies:
     lru-cache "^6.0.0"
+
+server-only@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/server-only/-/server-only-0.0.1.tgz#0f366bb6afb618c37c9255a314535dc412cd1c9e"
+  integrity sha512-qepMx2JxAa5jjfzxG79yPPq+8BuFToHd1hm7kI+Z4zAq1ftQiP7HcxMhDDItrbtwVeLg/cY2JnKnrcFkmiswNA==
 
 shallowequal@^1.1.0:
   version "1.1.0"
