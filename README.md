@@ -57,3 +57,8 @@ serverless deploy
 ```
 
 Update the env var `REACT_APP_LAMBDA_ENDPOINT` (in `.env`) with your lambda endpoint
+
+## Sponsors
+
+This project is being developed by [Premier Octet](https://www.premieroctet.com), a Web and mobile agency specializing in React and React Native developments.
+
